@@ -255,6 +255,7 @@ def showList(catalog_id):
 def newLatestItem(catalog_id):
     if 'username' not in login_session:
 	  return redirect('/login')
+    catalog = session.query(Catalog).filter_by(id = catalog_id).one() 		
     if request.method == 'POST':
         newItem = latestItem(name=request.form['name'], 
 		description=request.form['description'], 
